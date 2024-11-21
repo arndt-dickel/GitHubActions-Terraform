@@ -27,7 +27,7 @@ jobs:
         with:
           terraform_version: 1.0.1
           terraform_wrapper: false
-          
+
       - name: Terraform initialization
         id: init
         run: terraform init
@@ -36,7 +36,8 @@ jobs:
         id: plan
         run: terraform plan
 
+      # - name: Terraform apply infrastructure
+      #   run: terraform apply -auto-approve
 
-
-      - name: Terraform apply infrastructure
-        run: terraform apply -auto-approve
+      - name: Terraform destroy infrastructure
+        run: terraform destroy -auto-approve
