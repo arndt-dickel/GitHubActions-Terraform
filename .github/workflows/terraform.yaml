@@ -3,7 +3,7 @@ name: "Terraform"
 on:
   push:
     branches:
-      -main
+      - main
 
 jobs:
   terraform:
@@ -18,23 +18,23 @@ jobs:
     defaults:
       run:
         working-directory: src
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-        - name: Setup Terraform
-          uses: hashicorp/setup-terraform@v1
-          with:
-            terraform_version: 1.0.1
-            terraform_wrapper: false
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.1
+          terraform_wrapper: false
 
-        - name: Terraform planning
-          id: plan
-          run: terraform plan
+      - name: Terraform planning
+        id: plan
+        run: terraform plan
 
-        - name: Terraform initialization
-          id: init
-          run: terraform init
+      - name: Terraform initialization
+        id: init
+        run: terraform init
 
-        - name: Terraform apply infrastructure
-          run: terraform apply -auto-approve
+      - name: Terraform apply infrastructure
+        run: terraform apply -auto-approve
