@@ -27,14 +27,16 @@ jobs:
         with:
           terraform_version: 1.0.1
           terraform_wrapper: false
+          
+      - name: Terraform initialization
+        id: init
+        run: terraform init
 
       - name: Terraform planning
         id: plan
         run: terraform plan
 
-      - name: Terraform initialization
-        id: init
-        run: terraform init
+
 
       - name: Terraform apply infrastructure
         run: terraform apply -auto-approve
